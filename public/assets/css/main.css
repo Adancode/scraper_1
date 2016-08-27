@@ -17,16 +17,17 @@
     padding-left: 20px;
     padding-right: 20px;
     font-style: Verdana;
+    border-radius: 2px;
  }
  #notes{
     width:30%;
     float:right;
-
  }
  textarea, input{
     display:block;
     width:100%;
     background-color: #F6F6EF;
+
  }
  input{
     height:36px;
@@ -39,4 +40,7 @@
  .heading {
       font-style: Verdana;
       font-weight: 600;
+}
+.headline {
+     font-weight: 700;
 }
