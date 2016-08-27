@@ -12,8 +12,8 @@ var mongoose = require('mongoose');
 var cheerio = require('cheerio');
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://heroku_grhzdchb:jf1m7f7ne5s99i7b6icd1987ne@ds017636.mlab.com:17636/heroku_grhzdchb');
-//mongoose.connect('mongodb://localhost/scraper_one');
+
+mongoose.connect('mongodb://localhost/scraper_one');
 var db = mongoose.connection;
 
 // show any mongoose errors
@@ -33,11 +33,12 @@ db.once('open', function() {
 
 router.get('/', function(req, res) {
 	 // first, we grab the body of the html with request
-    request('http://www.echojs.com/', function(error, response, html) {
+    request('https://news.ycombinator.com/', function(error, response, html) {
         // then, we load that into cheerio and save it to $ for a shorthand selector
         var $ = cheerio.load(html);
         // now, we grab every h2 within an article tag, and do the following:
-        $('article h2').each(function(i, element) {
+        //$('article h2').each(function(i, element) {
+        $('td.title').each(function(i, element) {
 
             // save an empty result object
             var result = {};
@@ -68,7 +69,12 @@ router.get('/', function(req, res) {
         });
     });
     // tell the browser that we finished scraping the text.
-    res.render('home');
+    //res.render('home');
+
+    Article.find({},function(err,data) {
+         res.render('home');
+      //res.render('index', {article: data});
+     });
 });
 
 // A GET request to scrape the echojs website.
