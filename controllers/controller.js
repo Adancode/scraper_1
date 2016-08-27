@@ -12,8 +12,8 @@ var mongoose = require('mongoose');
 var cheerio = require('cheerio');
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://heroku_grhzdchb:jf1m7f7ne5s99i7b6icd1987ne@ds017636.mlab.com:17636/heroku_grhzdchb');
-//mongoose.connect('mongodb://localhost/scraper_one');
+
+mongoose.connect('mongodb://localhost/scraper_one');
 var db = mongoose.connection;
 
 // show any mongoose errors
