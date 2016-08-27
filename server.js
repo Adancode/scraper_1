@@ -29,6 +29,6 @@ var routes = require('./controllers/controller.js');
 app.use('/', routes);
 
 // listen on port 3000
-app.listen(3001, function() {
-  console.log('App running on port 3001!');
+app.listen(process.env.PORT || 3001,function(){
+ process.env.PORT == undefined? console.log("App listening on PORT 3001"):console.log("App listening on PORT" + process.env.PORT);
 });
